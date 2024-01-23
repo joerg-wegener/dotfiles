@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ ! -d ~/bin ]
+then
+  mkdir ~/bin
+fi
+
+ln -s $(realpath ./zsh/ide) ~/bin/ide
