@@ -1,0 +1,5 @@
+[user]
+	email = joergw@identage.com
+	name = Jörg Wegener
+[core]
+	editor = nvim
