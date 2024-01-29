@@ -10,6 +10,8 @@ return {
     config = function()
       require("mason-lspconfig").setup {
         ensure_installed = {
+          "cssls",
+          "eslint",
           "lua_ls",
           "tsserver",
         },
@@ -22,6 +24,7 @@ return {
       local lspconfig = require "lspconfig"
       lspconfig.lua_ls.setup {}
       lspconfig.tsserver.setup {}
+      lspconfig.cssls.setup {}
 
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
       vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
