@@ -3,3 +3,5 @@
 	name = Jörg Wegener
 [core]
 	editor = nvim
+[init]
+	defaultBranch = main
