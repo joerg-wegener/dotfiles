@@ -7,6 +7,12 @@ return {
     }
   },
   {
+    "hrsh7th/cmp-nvim-lsp",
+    config = function()
+      require("cmp_nvim_lsp").setup()
+    end
+  },
+  {
     "hrsh7th/nvim-cmp",
     config = function()
       local cmp = require "cmp"
