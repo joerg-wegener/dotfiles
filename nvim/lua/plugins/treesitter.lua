@@ -9,12 +9,18 @@ return {
     local config = require 'nvim-treesitter.configs'
     config.setup {
       ensure_installed = {
+        'bash',
         'c_sharp',
         'css',
+        'dockerfile',
+        'gitignore',
         'html',
         'javascript',
         'json',
         'lua',
+        'markdown',
+        'vim',
+        'yaml',
       },
       highlight = {
         enable = true,
@@ -23,7 +29,7 @@ return {
         enable = true,
       },
       autotag = {
-        enabled = true,
+        enable = true,
       },
       incremental_selection = {
         enable = true,
