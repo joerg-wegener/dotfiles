@@ -22,7 +22,5 @@ require("lazy").setup({ { import = "plugins" }, { import = "plugins.lsp" } }, {
   },
 })
 
-local builtin = require "telescope.builtin"
---vim.keymap.set("n", "<C-ff>", builtin.find_files, {})
---vim.keymap.set("n", "<C-fg>", builtin.live_grep, {})
+--local builtin = require "telescope.builtin"
 vim.lsp.set_log_level "debug"
