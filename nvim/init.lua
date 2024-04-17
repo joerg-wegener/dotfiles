@@ -24,3 +24,5 @@ require("lazy").setup({ { import = "plugins" }, { import = "plugins.lsp" } }, {
 
 --local builtin = require "telescope.builtin"
 vim.lsp.set_log_level "debug"
+
+vim.cmd "set mps+=<:>"
