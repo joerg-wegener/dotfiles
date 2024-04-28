@@ -28,3 +28,6 @@ opt.wrap = false
 
 opt.ignorecase = true
 opt.smartcase = true
+
+opt.scrolloff = 8
+opt.colorcolumn = "80"
