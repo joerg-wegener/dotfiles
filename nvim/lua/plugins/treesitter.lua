@@ -19,6 +19,7 @@ return {
         "json",
         "lua",
         "markdown",
+        "pug",
         "vim",
         "yaml",
       },
