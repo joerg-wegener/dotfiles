@@ -27,8 +27,11 @@ vim.keymap.set("n", "J", "mzJ`z")
 -- Zeilennummern
 opt.relativenumber = true
 opt.number = true
-vim.keymap.set("n", "<c-d>", "<c-d>zz")
-vim.keymap.set("n", "<c-u>", "<c-u>zz")
+
+-- funktion mit scrolling-plugin nicht mehr
+--vim.keymap.set("n", "<c-d>", "<c-d>zz")
+--vim.keymap.set("n", "<c-u>", "<c-u>zz")
+
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
