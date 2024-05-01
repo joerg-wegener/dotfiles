@@ -17,6 +17,10 @@ vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
 vim.keymap.set("n", "<leader>to", "<cmd>tabnew<CR>")
 vim.keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>")
 
+-- selektierte Zeilen verschieben
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
 -- Zeilennummern
 opt.relativenumber = true
 opt.number = true
