@@ -24,6 +24,9 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- line join, aber cursor bleibt stehen
 vim.keymap.set("n", "J", "mzJ`z")
 
+-- pasten, aber ohne dass das vorhandene register überschrieben wird
+vim.keymap.set("x", "<leader>p", '"_dP')
+
 -- Zeilennummern
 opt.relativenumber = true
 opt.number = true
