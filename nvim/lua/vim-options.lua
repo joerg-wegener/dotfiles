@@ -5,6 +5,7 @@ opt.tabstop = 2
 opt.softtabstop = 2
 opt.shiftwidth = 2
 opt.autoindent = true
+opt.termguicolors = true
 vim.g.mapleader = " "
 
 -- Inter-Pane navigation with tmux
@@ -30,4 +31,3 @@ opt.ignorecase = true
 opt.smartcase = true
 
 opt.scrolloff = 8
-opt.colorcolumn = "80"
