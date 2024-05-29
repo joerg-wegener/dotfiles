@@ -1,3 +1,3 @@
 #!/bin/env bash
 
-alias k=kubectl
+alias d='docker'
