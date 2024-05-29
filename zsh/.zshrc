@@ -70,11 +70,14 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=()
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+source ./.remote_profile/zsh/aliases.sh
+source ./.remote_profile/git/aliases.sh
+source ./.remote_profile/kubectl/aliases.sh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -99,3 +102,5 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+PATH=$PATH:~/bin
