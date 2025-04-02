@@ -75,9 +75,6 @@ plugins=()
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-source ./.remote_profile/zsh/aliases.sh
-source ./.remote_profile/git/aliases.sh
-source ./.remote_profile/kubectl/aliases.sh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -104,3 +101,5 @@ source ./.remote_profile/kubectl/aliases.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 PATH=$PATH:~/bin
+
+fastfetch --config example/13
