@@ -102,4 +102,4 @@ source $ZSH/oh-my-zsh.sh
 
 PATH=$PATH:~/bin
 
-fastfetch --config example/13
+fastfetch --config examples/13
