@@ -2,7 +2,7 @@
 @theme "catppuccin-default"
 
 configuration {
-    font: "MesloLGSDZ Nerd Font";
+    font: "MesloLGSDZ Nerd Font 12";
     modi: "run,window,combi";
     icon-theme: "Oranchelo";
     show-icons: true;
