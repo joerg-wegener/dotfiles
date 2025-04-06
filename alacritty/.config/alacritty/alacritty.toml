@@ -24,4 +24,3 @@ import = [
 
 [terminal.shell]
 program = "/usr/bin/tmux"
-args = ["new-session", "-A", "-D", "-s", "main"]
