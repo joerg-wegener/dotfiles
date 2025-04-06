@@ -1,1 +1,1 @@
-fastfetch --config examples/13
+fastfetch
