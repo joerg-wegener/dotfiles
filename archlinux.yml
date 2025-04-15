@@ -1,3 +1,7 @@
 - name: ArchDevelop1
   hosts: localhost
   tasks:
+    - name: System update
+      community.general.pacman:
+        update_cache: true
+        upgrade: true
