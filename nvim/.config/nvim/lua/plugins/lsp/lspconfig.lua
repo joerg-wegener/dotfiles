@@ -7,14 +7,14 @@ return {
     { "folke/neodev.nvim", opts = {} },
   },
   config = function()
-    local lspconfig = require("lspconfig")
-    local mason_lspconfig = require("mason-lspconfig")
-    local cmp_nvim_lsp = require("cmp_nvim_lsp")
+    local lspconfig = require "lspconfig"
+    local mason_lspconfig = require "mason-lspconfig"
+    local cmp_nvim_lsp = require "cmp_nvim_lsp"
 
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
       callback = function(ev)
-        local opts = {buffer = ev.buf, silent = true}
+        local opts = { buffer = ev.buf, silent = true }
 
         opts.desc = "Show LSP references"
         vim.keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
@@ -65,20 +65,20 @@ return {
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
 
-    mason_lspconfig.setup_handlers({
+    mason_lspconfig.setup_handlers {
       function(server_name)
-        lspconfig[server_name].setup({
+        lspconfig[server_name].setup {
           capabilities = capabilities,
-        })
+        }
       end,
       ["emmet_ls"] = function()
-        lspconfig["emmet_ls"].setup({
+        lspconfig["emmet_ls"].setup {
           capabilities = capabilities,
           filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
-        })
+        }
       end,
       ["lua_ls"] = function()
-        lspconfig["lua_ls"].setup({
+        lspconfig["lua_ls"].setup {
           capabilities = capabilities,
           settings = {
             Lua = {
@@ -90,8 +90,13 @@ return {
               },
             },
           },
-        })
+        }
       end,
-    })
+      ["csharp_ls"] = function()
+        lspconfig["csharp_ls"].setup {
+          capabilities = capabilities,
+        }
+      end,
+    }
   end,
 }

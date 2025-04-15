@@ -28,7 +28,6 @@ return {
         "emmet_ls",
         "lua_ls",
         "html",
-        "tsserver",
         "yamlls",
       },
     }
