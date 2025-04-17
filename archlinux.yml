@@ -1,12 +1,220 @@
 - name: ArchDevelop1
   hosts: localhost
   tasks:
-    - name: "System update"
+    - name: "System update cache"
       community.general.pacman:
         update_cache: true
+    - name: "System upgrade"
+      community.general.pacman:
         upgrade: true
     - name: "Ensure stow installed"
       become: yes
       pacman:
         name: stow
         state: present
+
+    - name: "Ensure fastfetch installed"
+      become: yes
+      pacman:
+        name: fastfetch
+        state: present
+    - name: "Ensure fastfetch dotfiles are configured"
+      become: yes
+      shell: stow -v -t /home/joergw -S fastfetch
+      args:
+        chdir: ./dotfiles
+        executable: /bin/bash
+      register: result
+      ignore_errors: true
+      changed_when:
+        - '"LINK" in result.stderr'
+      failed_when: result.rc != 0
+
+    # Desktop
+    - name: "Ensure desktop installed"
+      become: yes
+      pacman:
+        name:
+          - hyprland
+          - hyprlock
+          - rofi
+          - swaync
+          - waybar
+          - playerctl
+          - flatpak
+          - wl-clipboard
+          - cmatrix
+          - cava
+        state: present
+    - name: "Ensure hyprland dotfiles are configured"
+      become: yes
+      shell: stow -v -t /home/joergw -S hyprland
+      args:
+        chdir: ./dotfiles
+        executable: /bin/bash
+      register: result
+      ignore_errors: true
+      changed_when:
+        - '"LINK" in result.stderr'
+      failed_when: result.rc != 0
+    - name: "Ensure rofi dotfiles are configured"
+      become: yes
+      shell: stow -v -t /home/joergw -S rofi
+      args:
+        chdir: ./dotfiles
+        executable: /bin/bash
+      register: result
+      ignore_errors: true
+      changed_when:
+        - '"LINK" in result.stderr'
+      failed_when: result.rc != 0
+    - name: "Ensure waybar dotfiles are configured"
+      become: yes
+      shell: stow -v -t /home/joergw -S waybar
+      args:
+        chdir: ./dotfiles
+        executable: /bin/bash
+      register: result
+      changed_when:
+        - '"LINK" in result.stderr'
+      failed_when: result.rc != 0
+    - name: "Ensure desktop utilities installed"
+      become: yes
+      pacman:
+        name:
+          - fzf
+          - unzip
+          - bat
+        state: present
+
+    - name: "Ensure alacritty installed"
+      become: yes
+      pacman:
+        name:
+          - alacritty
+          - ttf-meslo-nerd
+        state: present
+    - name: "Ensure alacritty dotfiles are configured"
+      become: yes
+      shell: stow -v -t /home/joergw -S alacritty
+      args:
+        chdir: ./dotfiles
+        executable: /bin/bash
+      register: result
+      ignore_errors: true
+      changed_when:
+        - '"LINK" in result.stderr'
+      failed_when: result.rc != 0
+
+    - name: "Ensure zsh installed"
+      become: yes
+      pacman:
+        name: zsh
+        state: present
+    - name: "Ensure zsh dotfiles are configured"
+      become: yes
+      shell: stow -v -t /home/joergw -S zsh
+      args:
+        chdir: ./dotfiles
+        executable: /bin/bash
+      register: result
+      ignore_errors: true
+      changed_when:
+        - '"LINK" in result.stderr'
+      failed_when: result.rc != 0
+
+    - name: "Ensure tmux installed"
+      become: yes
+      pacman:
+        name: tmux
+        state: present
+    - name: "Ensure tmux dotfiles are configured"
+      become: yes
+      shell: stow -v -t /home/joergw -S tmux
+      args:
+        chdir: ./dotfiles
+        executable: /bin/bash
+      register: result
+      ignore_errors: true
+      changed_when:
+        - '"LINK" in result.stderr'
+      failed_when: result.rc != 0
+
+    - name: "Ensure neovim installed"
+      become: yes
+      pacman:
+        name: neovim
+        state: present
+    - name: "Ensure neovim dotfiles are configured"
+      become: yes
+      shell: stow -v -t /home/joergw -S nvim
+      args:
+        chdir: ./dotfiles
+        executable: /bin/bash
+      register: result
+      ignore_errors: true
+      changed_when:
+        - '"LINK" in result.stderr'
+      failed_when: result.rc != 0
+
+    # Developer
+    - name: "Ensure nodejs and npm installed"
+      become: yes
+      pacman:
+        name:
+          - nodejs
+          - npm
+        state: present
+    - name: "Ensure VS Code installed"
+      become: yes
+      community.general.flatpak:
+        name: com.visualstudio.code
+        state: present
+
+    # Container Development
+    - name: "Ensure container tools installed"
+      become: yes
+      pacman:
+        name:
+          - podman
+          - podman-compose
+          - podman-desktop
+          - podman-docker
+        state: present
+
+    # Cloud Development
+    - name: "Ensure kubetools installed"
+      become: yes
+      pacman:
+        name:
+          - kubectl
+          - kubeadm
+          - azure-cli
+        state: present
+
+    # Office
+    - name: "Ensure office tools installed"
+      become: yes
+      community.general.flatpak:
+        name:
+          - org.mozilla.firefox
+          - eu.betterbird.Betterbird
+          - org.libreoffice.LibreOffice
+        state: present
+
+    # Password Management
+    - name: "Ensure Password Manager installed"
+      become: yes
+      community.general.flatpak:
+        name: org.keepassxc.KeePassXC
+        state: present
+
+    # Entertainment
+    - name: "Ensure Entertainment installed"
+      become: yes
+      community.general.flatpak:
+        name:
+          - org.videolan.VLC
+          - com.spotify.Client
+
+    # slack
