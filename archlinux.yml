@@ -39,6 +39,7 @@
           - hyprlock
           - rofi
           - swaync
+          - swayidle
           - waybar
           - playerctl
           - brightnessctl
@@ -46,8 +47,8 @@
           - wl-clipboard
           - bluez
           - bluez-utils
-          - pulseaudio
-          - pulseaudio-bluetooth
+          - pipewire
+          - pipewire-pulse
           - pavucontrol
           - cmatrix
           - cava
