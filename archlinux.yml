@@ -41,8 +41,14 @@
           - swaync
           - waybar
           - playerctl
+          - brightnessctl
           - flatpak
           - wl-clipboard
+          - bluez
+          - bluez-utils
+          - pulseaudio
+          - pulseaudio-bluetooth
+          - pavucontrol
           - cmatrix
           - cava
         state: present
