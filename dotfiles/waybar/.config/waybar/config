@@ -1,25 +1,25 @@
 {
-    "layer": "top", // Waybar at top layer
-    "position": "top", // Waybar position (top|bottom|left|right)
-    // "width": 1280, // Waybar width
+    "layer": "top",
+    "height": 30,
+    "spacing": 5,
     // Choose the order of the modules
-    "modules-left": ["hyprland/workspaces"],
-    "modules-center": ["custom/music"],
-    "modules-right": ["pulseaudio", "backlight", "battery", "clock", "tray", "custom/lock", "custom/power"],
-    "hyprland/workspaces": {
-         "disable-scroll": true,
-         "sort-by-name": true,
-         "format": " {icon} ",
-         "format-icons": {
-             "default": ""
-         }
-     },
-    "tray": {
-        "icon-size": 21,
-        "spacing": 10
-    },
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "custom/music"
+    ],
+    "modules-right": [
+				"tray",
+        "custom/pacman",
+        "pulseaudio",
+        "network",
+        "battery",
+				"clock",
+        "custom/power"
+		],
     "custom/music": {
-        "format": "  {}",
+        "format": "   {}",
         "escape": true,
         "interval": 5,
         "tooltip": false,
@@ -27,16 +27,29 @@
         "on-click": "playerctl play-pause",
         "max-length": 50
     },
-    "clock": {
-        "timezone": "Europe/Berlin",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": " {:%d/%m/%Y}",
-        "format": "{:%H:%M}"
+		"hyprland/window": {
+			"separate-outputs": true
+		},
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "on-click": "activate"
     },
-    "backlight": {
-        "device": "intel_backlight",
-        "format": "{icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+		"custom/pacman": {
+			"interval": 3600,
+			"return-type": "json",
+			"exec": "pacman-updates",
+			"exec-if": "exit 0",
+			"on-click": "$TERMINAL -e paru; pkill -SIGRTMIN+8 waybar",
+			"signal": 8
+		},
+    "clock": {
+        "tooltip-format": "{:%A, %B %d, %Y}",
+        "format": "{:%H:%M}"
     },
     "battery": {
         "states": {
@@ -44,28 +57,32 @@
             "critical": 15
         },
         "format": "{icon}",
-        "format-charging": "charging",
-        "format-plugged": "plugged",
-        "format-alt": "{icon}",
-        "format-icons": ["󰁺", "󰁻",  "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+        "format-icons": [ "󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" ],
+        "format-charging": "󰂄",
+        "format-warning": "󰂃",
+				"tooltip-format": "{capacity}% capacity"
+    },
+    "network": {
+        "format-wifi": "󰤨",
+        "format-disconnected": "󰤭",
+				"tooltip-format": "Connected to {essid}",
+				"on-click": "hyprctl dispatch exec '[float]' '$TERMINAL -e nmtui'"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{icon}  {volume}%",
-        "format-muted": "",
-        "format-icons": {
-            "default": ["", "", " "]
-        },
+        "format": "{icon}",
+        "format-muted": "󰖁",
+				"format-icons": {
+					"default": ["", "", "󰕾"]
+				},
+				"tooltip-format": "{volume}% volume",
         "on-click": "pavucontrol"
-    },
-    "custom/lock": {
-        "tooltip": false,
-        "on-click": "sh -c '(sleep 0.5s; hyprlock)' & disown",
-        "format": ""
-    },
+		},
     "custom/power": {
-        "tooltip": false,
-        "on-click": "wlogout &",
-        "format": "󰍃"
+        "format": "󰐥",
+        "on-click": "sleep 0.15 && wlogout"
     }
 }
+
+// vim: ft=jsonc
+
