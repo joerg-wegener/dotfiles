@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# thank you to: https://github.com/Gl00ria/dotfiles/blob/main/dot_hyprland/.config/hypr/autostart
+
+waybar &
+
+# notification daemon
+swaync &
+
+# swayosd-server &
+
+# idle
+swayidle -w timeout 60 "hyprlock" before-sleep "hyprlock" & # lock screen after x seconds of idle
+# swayidle -w timeout 1200 "systemctl hibernate" &             # hibernate after x seconds of idle
