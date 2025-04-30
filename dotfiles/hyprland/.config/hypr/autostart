@@ -9,5 +9,5 @@ swaync &
 # swayosd-server &
 
 # idle
-swayidle -w timeout 60 "hyprlock" before-sleep "hyprlock" & # lock screen after x seconds of idle
+# swayidle -w timeout 60 "hyprlock" before-sleep "hyprlock" & # lock screen after x seconds of idle
 # swayidle -w timeout 1200 "systemctl hibernate" &             # hibernate after x seconds of idle
