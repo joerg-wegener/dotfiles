@@ -198,6 +198,12 @@
           - kubeadm
           - azure-cli
         state: present
+    - name: "Ensure github installed"
+      become: yes
+      community.general.flatpak:
+        name:
+          - io.github.shiftey.Desktop
+        state: present
 
     # Office
     - name: "Ensure office tools installed"
