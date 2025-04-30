@@ -31,8 +31,7 @@
 
 * {
   font-family: Cantarell, Symbols Nerd Font;
-  font-weight: bolder;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 window#waybar {
@@ -73,6 +72,10 @@ button {
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+
+#workspaces {
+  font-weight: bold;
+}
 
 #workspaces button:hover {
   color: @blue;

@@ -1,6 +1,6 @@
 {
     "layer": "top",
-    "height": 30,
+    "height": 26,
     "spacing": 5,
     // Choose the order of the modules
     "modules-left": [
@@ -66,7 +66,7 @@
         "format-wifi": "󰤨",
         "format-disconnected": "󰤭",
 				"tooltip-format": "Connected to {essid}",
-				"on-click": "hyprctl dispatch exec '[float]' '$TERMINAL -e nmtui'"
+				"on-click": "hyprctl dispatch exec '[float] alacritty -e sh -c iwctl'"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
