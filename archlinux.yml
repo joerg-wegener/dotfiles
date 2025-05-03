@@ -185,8 +185,13 @@
         name:
           - podman
           - podman-compose
-          - podman-desktop
           - podman-docker
+        state: present
+    - name: "Ensure container desktop tools installed"
+      become: yes
+      community.general.flatpak:
+        name:
+          - io.podman_desktop.PodmanDesktop
         state: present
 
     # Cloud Development
