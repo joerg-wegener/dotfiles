@@ -13,6 +13,13 @@
         name: stow
         state: present
 
+    - name: "Ensure system components installed"
+      become: yes
+      pacman:
+        name:
+          - opendoas
+        state: present
+
     - name: "Ensure fastfetch installed"
       become: yes
       pacman:
@@ -37,6 +44,8 @@
         name:
           - hyprland
           - hyprlock
+          - hypridle
+          - uwsm
           - rofi
           - swaync
           - swayidle
@@ -202,6 +211,8 @@
           - kubectl
           - kubeadm
           - azure-cli
+          - minikube
+          - helm
         state: present
     - name: "Ensure github installed"
       become: yes
