@@ -195,6 +195,7 @@
           - podman
           - podman-compose
           - podman-docker
+          - dive
         state: present
     - name: "Ensure container desktop tools installed"
       become: yes
