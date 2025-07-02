@@ -32,6 +32,8 @@ vim.keymap.set("x", "<leader>p", '"_dP')
 opt.relativenumber = true
 opt.number = true
 
+opt.colorcolumn = "120"
+
 -- funktion mit scrolling-plugin nicht mehr
 --vim.keymap.set("n", "<c-d>", "<c-d>zz")
 --vim.keymap.set("n", "<c-u>", "<c-u>zz")
