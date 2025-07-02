@@ -211,7 +211,6 @@
         name:
           - kubectl
           - kubeadm
-          - kube-controller-manager
           - azure-cli
           - minikube
           - helm
