@@ -7,6 +7,10 @@
     - name: "System upgrade"
       community.general.pacman:
         upgrade: true
+    - name: "Application upgrade"
+      ansible.builtin.command: flatpak update --noninteractive
+      register: flatpak_update_output
+      changed_when: "'app/' in flatpak_update_output.stdout"
     - name: "Ensure stow installed"
       become: yes
       pacman:
@@ -180,6 +184,7 @@
         name:
           - nodejs
           - npm
+          - rust
         state: present
     - name: "Ensure VS Code installed"
       become: yes
@@ -220,6 +225,14 @@
       community.general.flatpak:
         name:
           - io.github.shiftey.Desktop
+        state: present
+
+    # Database
+    - name: "Ensure database tools installed"
+      become: yes
+      community.general.flatpak:
+        name:
+          - org.pgadmin.pgadmin4
         state: present
 
     # Office
