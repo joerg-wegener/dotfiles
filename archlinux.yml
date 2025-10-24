@@ -22,6 +22,7 @@
       pacman:
         name:
           - opendoas
+          - bind
         state: present
 
     - name: "Ensure fastfetch installed"
@@ -176,6 +177,9 @@
       changed_when:
         - '"LINK" in result.stderr'
       failed_when: result.rc != 0
+    - name: "Update neovim plugins"
+      ansible.builtin.shell: |
+        nvim --headless "+Lazy! sync" +qa
 
     # Developer
     - name: "Ensure nodejs and npm installed"
@@ -184,6 +188,7 @@
         name:
           - nodejs
           - npm
+          - yarn
           - rust
         state: present
     - name: "Ensure VS Code installed"
@@ -201,6 +206,7 @@
           - podman-compose
           - podman-docker
           - dive
+          - nerdctl
         state: present
     - name: "Ensure container desktop tools installed"
       become: yes
@@ -260,4 +266,6 @@
           - org.videolan.VLC
           - com.spotify.Client
 
-    # slack
+    # communication: slack
+    # 3d printing: freeCAD, [slicer]
+    # rest: HTTPie
