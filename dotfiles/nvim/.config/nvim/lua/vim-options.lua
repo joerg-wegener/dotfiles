@@ -7,6 +7,7 @@ opt.softtabstop = 2
 opt.shiftwidth = 2
 opt.autoindent = true
 opt.termguicolors = true -- Enable 24-bit RGB color in the TUI
+opt.laststatus = 3
 vim.g.mapleader = " "
 
 -- Inter-Pane navigation with tmux
@@ -35,7 +36,7 @@ opt.relativenumber = true
 opt.number = true
 
 opt.signcolumn = "yes"
-opt.colorcolumn = "120"
+opt.colorcolumn = "181"
 opt.cursorline = true
 
 -- funktion mit scrolling-plugin nicht mehr
