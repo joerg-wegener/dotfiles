@@ -213,6 +213,7 @@
       community.general.flatpak:
         name:
           - io.podman_desktop.PodmanDesktop
+          - io.k8slens.OpenLens
         state: present
 
     # Cloud Development
@@ -223,9 +224,16 @@
           - kubectl
           - kubeadm
           - azure-cli
+          - azure-kubelogin
           - minikube
           - helm
+          - github-cli
         state: present
+    - name: "Ensure kube desktop tools installed"
+      become: yes
+      community.general.flatpak:
+        name:
+          - dev.k8slens.OpenLens
     - name: "Ensure github installed"
       become: yes
       community.general.flatpak:
