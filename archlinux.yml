@@ -23,6 +23,7 @@
         name:
           - opendoas
           - bind
+          - mtr
         state: present
 
     - name: "Ensure fastfetch installed"
@@ -59,6 +60,7 @@
           - brightnessctl
           - flatpak
           - wl-clipboard
+          - usbutils
           - bluez
           - bluez-utils
           - pipewire
