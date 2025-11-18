@@ -24,6 +24,8 @@
           - opendoas
           - bind
           - mtr
+          - fd
+          - ripgrep
         state: present
 
     - name: "Ensure fastfetch installed"
@@ -215,7 +217,7 @@
       community.general.flatpak:
         name:
           - io.podman_desktop.PodmanDesktop
-          - io.k8slens.OpenLens
+          - dev.k8slens.OpenLens
         state: present
 
     # Cloud Development
