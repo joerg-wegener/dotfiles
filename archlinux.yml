@@ -28,6 +28,18 @@
           - ripgrep
         state: present
 
+    # Security
+    - name: "Ensure auditing system is enabled and running"
+      become: yes
+      ansible.builtin.service:
+        name: auditd
+        state: started
+        enabled: true
+    - name: "Ensure AppArmor installed"
+      pacman:
+        name:
+          - apparmor
+
     - name: "Ensure fastfetch installed"
       become: yes
       pacman:
