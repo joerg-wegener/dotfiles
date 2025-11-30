@@ -23,6 +23,8 @@
         name:
           - opendoas
           - bind
+          - net-tools
+          - iftop
           - mtr
           - fd
           - ripgrep
@@ -35,6 +37,7 @@
         name: auditd
         state: started
         enabled: true
+    # TODO: kernel-parameter nachreichen
     - name: "Ensure AppArmor installed"
       pacman:
         name:
