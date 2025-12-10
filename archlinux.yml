@@ -25,6 +25,9 @@
           - bind
           - net-tools
           - iftop
+          - htop
+          - btop
+          - bottom
           - mtr
           - fd
           - ripgrep
@@ -259,6 +262,13 @@
         name:
           - io.github.shiftey.Desktop
         state: present
+
+    # Infrastructure as code IAC
+    - name: "Ensure IAC installed"
+      become: yes
+      pacman:
+        name:
+          - terraform
 
     # Database
     - name: "Ensure database tools installed"
