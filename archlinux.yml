@@ -25,6 +25,7 @@
           - bind
           - net-tools
           - iftop
+          - nmap
           - htop
           - btop
           - bottom
