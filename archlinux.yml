@@ -23,14 +23,16 @@
         name:
           - btrfs-progs
           - opendoas
+          - at # scheduled jobs (wie cron, aber nur ein mal)
           - bind
           - net-tools
           - iftop
           - nmap
-          - htop
-          - btop
-          - bottom
-          - mtr
+          - httpie
+          - htop # top
+          - btop # top
+          - bottom # auch top
+          - mtr # alt. zu traceroute
           - fd
           - tree
           - ripgrep
