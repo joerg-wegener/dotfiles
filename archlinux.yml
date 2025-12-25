@@ -21,6 +21,7 @@
       become: yes
       pacman:
         name:
+          - btrfs-progs
           - opendoas
           - bind
           - net-tools
@@ -31,6 +32,7 @@
           - bottom
           - mtr
           - fd
+          - tree
           - ripgrep
         state: present
 
@@ -70,7 +72,8 @@
       pacman:
         name:
           - hyprland
-          - hyprlock
+          - ly # login
+          - hyprlock # lockscreen
           - hypridle
           - uwsm
           - rofi
@@ -212,8 +215,9 @@
           - nodejs
           - npm
           - yarn
-          - rust
+          - rustup
         state: present
+    # TODO: rustup update
     - name: "Ensure VS Code installed"
       become: yes
       community.general.flatpak:
@@ -228,6 +232,7 @@
           - podman
           - podman-compose
           - podman-docker
+          - lxd # inkl. lxc
           - dive
           - nerdctl
         state: present
