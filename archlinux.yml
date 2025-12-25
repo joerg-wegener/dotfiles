@@ -36,6 +36,7 @@
           - fd
           - tree
           - ripgrep
+          - rclone
           - hyperfine
         state: present
 
