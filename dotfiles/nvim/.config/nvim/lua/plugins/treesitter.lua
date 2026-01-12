@@ -6,7 +6,7 @@ return {
     "windwp/nvim-ts-autotag",
   },
   config = function()
-    local config = require "nvim-treesitter.configs"
+    local config = require "nvim-treesitter.config"
     config.setup {
       ensure_installed = {
         "bash",
