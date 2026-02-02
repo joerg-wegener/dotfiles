@@ -22,7 +22,8 @@
       pacman:
         name:
           - btrfs-progs
-          - opendoas
+          - opendoas # alternative zu sudo
+          - firewalld # firewall (für nftables)
           - at # scheduled jobs (wie cron, aber nur ein mal)
           - bind
           - net-tools
@@ -38,6 +39,7 @@
           - ripgrep
           - rclone
           - hyperfine
+          - ssh-audit
         state: present
 
     # Security
@@ -220,6 +222,9 @@
           - npm
           - yarn
           - rustup
+          - go
+          - python
+          - uv
         state: present
     # TODO: rustup update
     - name: "Ensure VS Code installed"
@@ -278,6 +283,7 @@
       become: yes
       pacman:
         name:
+          - ansible-lint
           - terraform
 
     # Database
