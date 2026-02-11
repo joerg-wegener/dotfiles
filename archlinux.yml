@@ -27,6 +27,7 @@
           - at # scheduled jobs (wie cron, aber nur ein mal)
           - bind
           - net-tools
+          - impala # wifi tui
           - iftop
           - nmap
           - httpie
