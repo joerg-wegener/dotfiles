@@ -261,6 +261,8 @@
         name:
           - kubectl
           - kubeadm
+          - kubectx
+          - kubie # alt. to kubectx/kubens
           - azure-cli
           - azure-kubelogin
           - minikube
