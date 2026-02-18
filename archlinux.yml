@@ -254,6 +254,9 @@
           - dive
           - nerdctl
         state: present
+    # firewall-cmd --zone=trusted --add-interface=lxbr0 --permanent
+    # firewall-cmd --zone=public --add-masquerade --permanent
+
     - name: "Ensure container desktop tools installed"
       become: yes
       community.general.flatpak:
@@ -331,5 +334,5 @@
           - com.spotify.Client
 
     # communication: slack
-    # 3d printing: freeCAD, [slicer]
+    # 3d printing: freeCAD, PrusaSlicer, BambuStudio
     # rest: HTTPie
