@@ -234,6 +234,14 @@
         name: com.visualstudio.code
         state: present
 
+    # AI Developer
+    - name: "Ensure AI Tools installed"
+      become: yes
+      pacman:
+        name:
+          - opencode
+        state: present
+
     # Container Development
     - name: "Ensure container tools installed"
       become: yes
