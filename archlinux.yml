@@ -237,10 +237,15 @@
     # AI Developer
     - name: "Ensure AI Tools installed"
       become: yes
-      pacman:
-        name:
-          - opencode
-        state: present
+      shell: stow -v -t /home/joergw -S opencode
+      args:
+        chdir: ./dotfiles
+        executable: /bin/bash
+      register: result
+      ignore_errors: true
+      changed_when:
+        - '"LINK" in result.stderr'
+      failed_when: result.rc != 0
 
     # Container Development
     - name: "Ensure container tools installed"
