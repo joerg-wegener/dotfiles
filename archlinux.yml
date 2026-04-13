@@ -7,6 +7,10 @@
     - name: "System upgrade"
       community.general.pacman:
         upgrade: true
+    - name: "Ensure Flatpack installed"
+      community.general.pacman:
+        name: flatpak
+        state: present
     - name: "Application upgrade"
       ansible.builtin.command: flatpak update --noninteractive
       register: flatpak_update_output
