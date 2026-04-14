@@ -83,7 +83,6 @@
       pacman:
         name:
           - hyprland
-          - ly # login
           - hyprlock # lockscreen
           - hypridle
           - uwsm
@@ -104,6 +103,18 @@
           - cmatrix
           - cava
         state: present
+    - name: "Ensure Display Manager installed"
+      become: yes
+      pacman:
+        name:
+          - ly
+    - name: "Ensure Display Manager enabled"
+      become: yes
+      systemd:
+        name: ly@tty2
+        state: started
+        enabled: true
+
     - name: "Ensure hyprland dotfiles are configured"
       become: yes
       shell: stow -v -t /home/joergw -S hyprland
