@@ -247,11 +247,6 @@
           - uv
         state: present
     # TODO: rustup update
-    - name: "Ensure VS Code installed"
-      become: yes
-      community.general.flatpak:
-        name: com.visualstudio.code
-        state: present
 
     # AI Developer
     - name: "Ensure AI Tools installed"
