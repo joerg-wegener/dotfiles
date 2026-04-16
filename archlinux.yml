@@ -213,6 +213,8 @@
       changed_when:
         - '"LINK" in result.stderr'
       failed_when: result.rc != 0
+    # todo: tpm
+    # git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
     - name: "Ensure neovim installed"
       become: yes
