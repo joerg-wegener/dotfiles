@@ -195,7 +195,7 @@
       failed_when: result.rc != 0
     - name: "Ensure zsh as default shell for current user"
       ansible.builtin.user:
-        name: "{{ ansible_user_id }}"
+        name: "{{ ansible_facts['user_id'] }}"
         shell: "/bin/zsh"
 
     - name: "Ensure tmux installed"
