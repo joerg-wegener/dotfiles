@@ -25,6 +25,7 @@
       become: yes
       pacman:
         name:
+          - plymouth
           - btrfs-progs
           - opendoas # alternative zu sudo
           - firewalld # firewall (für nftables)
@@ -45,6 +46,7 @@
           - rclone
           - hyperfine
           - ssh-audit
+          - vim
         state: present
 
     # Security
