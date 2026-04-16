@@ -114,7 +114,6 @@
       become: yes
       systemd:
         name: ly@tty2
-        state: started
         enabled: true
 
     - name: "Ensure hyprland dotfiles are configured"
