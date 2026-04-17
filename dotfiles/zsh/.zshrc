@@ -1,3 +1,9 @@
+# farben aktivieren
+autoload -U colors && colors
+
+# Prompt‑Substitution aktivieren
+setopt prompt_subst
+
 for f in ~/.config/zshrc/*; do
     if [ ! -d $f ]; then
         [[ -f $f ]] && source $f
@@ -6,25 +12,31 @@ done
 
 # Git branch and status
 git_prompt() {
-    if git rev-parse --git-dir > /dev/null 2>&1; then
-        local branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
-        local status=$(git status --porcelain 2>/dev/null)
-        
-        if [ -n "$status" ]; then
-            echo " (%F{yellow}${branch}%f %F{yellow}✕%f)"
-        else
-            echo " (%F{blue}${branch}%f)"
-        fi
+  # Nur ausführen, wenn wir in einem Git‑Arbeits‑Tree sind
+  if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    # aktueller Branch (oder detached HEAD)
+    local branch
+    branch=$(git symbolic-ref --quiet --short HEAD 2>/dev/null ||
+            git rev-parse --short HEAD 2>/dev/null)
+
+    # gibt es nicht‑committete Änderungen?
+    local dirty
+    dirty=$(git status --porcelain 2>/dev/null)
+
+    # Ausgabe:
+    #   (branch)            – sauber
+    #   (branch) %F{yellow}x%f   – dirty
+    if [[ -n $dirty ]]; then
+      echo "%F{magenta}(${branch})%f %F{yellow}x%f"
+    else
+      echo "%F{magenta}(${branch})%f"
     fi
+  fi
 }
 
 # Exit status indicator
 exit_status() {
-    if [ $? -eq 0 ]; then
-        echo "%F{green}→%f"
-    else
-        echo "%F{red}✕%f"
-    fi
+  echo "%(?.%F{green}-->%F{red}x%f)"
 }
 
 # Prompt
