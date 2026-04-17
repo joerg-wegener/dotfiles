@@ -36,7 +36,7 @@ git_prompt() {
 
 # Exit status indicator
 exit_status() {
-  echo "%(?.%F{green}-->%F{red}x%f)"
+  echo "%(?.%F{green}%F{red}%f)"
 }
 
 # Prompt
