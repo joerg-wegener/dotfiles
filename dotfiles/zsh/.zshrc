@@ -27,17 +27,37 @@ git_prompt() {
     #   (branch)            – sauber
     #   (branch) %F{yellow}x%f   – dirty
     if [[ -n $dirty ]]; then
-      echo "%F{magenta}(${branch})%f %F{yellow}x%f"
+      echo "%F{magenta}${branch}%f %F{yellow}x%f"
     else
-      echo "%F{magenta}(${branch})%f"
+      echo "%F{magenta}${branch}%f"
     fi
   fi
 }
 
 # Exit status indicator
 exit_status() {
-  echo "%(?.%F{green}.%F{red}%f)"
+  echo "%(?.%F{silver}.%F{red}%f)"
+}
+
+current_path() {
+  local pwd="$PWD"
+  local home="$HOME"
+
+  if [[ "$pwd" == "/" ]]; then
+    echo "/"
+  elif [[ "$pwd" == "$home" ]]; then
+    echo "~"
+  elif [[ "$pwd" == "$home/*" ]]; then
+    if [[ "${pwd##*$home}" == "/${pwd##*/}" ]]; then
+      echo "~/${pwd##*/}"
+    else
+      echo "~/../${pwd##*/}"
+    fi
+  else
+    echo "${pwd##*/}"
+  fi
 }
 
 # Prompt
-PROMPT='$(exit_status) %F{cyan}%1d%f$(git_prompt) '
+PROMPT='$(exit_status)  %F{cyan}$(current_path)%f$(git_prompt) '
+RPROMPT='joergw 10:30'
