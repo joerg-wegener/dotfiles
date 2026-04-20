@@ -27,9 +27,9 @@ git_prompt() {
     #   (branch)            – sauber
     #   (branch) %F{yellow}x%f   – dirty
     if [[ -n $dirty ]]; then
-      echo "%F{magenta}${branch}%f %F{yellow}x%f"
+      echo " %F{magenta}${branch}%f %F{yellow}x%f"
     else
-      echo "%F{magenta}${branch}%f"
+      echo " %F{magenta}${branch}%f"
     fi
   fi
 }
@@ -47,7 +47,7 @@ current_path() {
     echo "/"
   elif [[ "$pwd" == "$home" ]]; then
     echo "~"
-  elif [[ "$pwd" == "$home/*" ]]; then
+  elif [[ "$pwd" == "$home"/* ]]; then
     if [[ "${pwd##*$home}" == "/${pwd##*/}" ]]; then
       echo "~/${pwd##*/}"
     else
