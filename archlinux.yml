@@ -250,6 +250,11 @@
           - uv
         state: present
     # TODO: rustup update
+    - name: "Ensure zed editor installed"
+      become: yes
+      community.general.flatpak:
+        name:
+          - flathub dev.zed.Zed
 
     # AI Developer
     - name: "Ensure AI Tools installed"
