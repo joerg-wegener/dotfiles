@@ -307,6 +307,7 @@
       community.general.flatpak:
         name:
           - dev.k8slens.OpenLens
+        state: present
     - name: "Ensure github installed"
       become: yes
       community.general.flatpak:
@@ -321,6 +322,7 @@
         name:
           - ansible-lint
           - terraform
+        state: present
 
     # Database
     - name: "Ensure database tools installed"
@@ -343,8 +345,9 @@
     # Password Management
     - name: "Ensure Password Manager installed"
       become: yes
-      community.general.flatpak:
-        name: org.keepassxc.KeePassXC
+      pacman:
+        name:
+          - keepassxc
         state: present
 
     # Entertainment
@@ -354,6 +357,7 @@
         name:
           - org.videolan.VLC
           - com.spotify.Client
+        state: present
 
     # communication: slack
     # 3d printing: freeCAD, PrusaSlicer, BambuStudio
