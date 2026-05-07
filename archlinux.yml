@@ -47,6 +47,7 @@
           - hyperfine
           - ssh-audit
           - vim
+          - openssh
         state: present
 
     # Security
