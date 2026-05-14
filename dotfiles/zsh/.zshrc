@@ -1,8 +1,21 @@
-# farben aktivieren
+# activate colors
 autoload -U colors && colors
 
-# Prompt‑Substitution aktivieren
+# initialize autocompletion
+autoload -U compinit && compinit
+
+# Prompt‑Substitution activate
 setopt prompt_subst
+
+# History
+setopt SHARE_HISTORY
+export HISTFILE=$HOME/.zsh_history
+export HISTSIZE=100000
+export SAVEHIST=100000
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt INC_APPEND_HISTORY
+bindkey '\e[A' history-search-backward
+bindkey '\e[B' history-search-forward
 
 for f in ~/.config/zshrc/*; do
     if [ ! -d $f ]; then
