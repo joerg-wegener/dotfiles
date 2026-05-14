@@ -1,3 +1,6 @@
+# see also: A Guide to the Zsh Completion with Examples
+# https://thevaluable.dev/zsh-completion-guide-examples/
+
 # activate colors
 autoload -U colors && colors
 
