@@ -1,8 +1,12 @@
 [user]
 	email = joergw@identage.com
 	name = Jörg Wegener
+[pager]
+  diff =
 [core]
   editor = nvim
   pager = 
 [init]
 	defaultBranch = main
+[worktree]
+  useRelativePaths = true
