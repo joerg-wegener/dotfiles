@@ -25,12 +25,14 @@
       become: yes
       pacman:
         name:
+          - vim
           - plymouth
           - btrfs-progs
           - opendoas # alternative zu sudo
           - firewalld # firewall (für nftables)
           - at # scheduled jobs (wie cron, aber nur ein mal)
           - bind
+          - iputils
           - net-tools
           - impala # wifi tui
           - iftop
@@ -40,6 +42,7 @@
           - btop # top
           - bottom # auch top
           - mtr # alt. zu traceroute
+          - traceroute
           - fd
           - tree
           - ripgrep
@@ -48,6 +51,8 @@
           - ssh-audit
           - vim
           - openssh
+          - systemd-resolvconf
+          - nfs-utils
         state: present
 
     # Security
@@ -242,6 +247,7 @@
       become: yes
       pacman:
         name:
+          - difftastic
           - nodejs
           - npm
           - yarn
@@ -252,19 +258,6 @@
           - zed
         state: present
     # TODO: rustup update
-
-    # AI Developer
-    - name: "Ensure AI Tools installed"
-      become: yes
-      shell: stow -v -t /home/joergw -S opencode
-      args:
-        chdir: ./dotfiles
-        executable: /bin/bash
-      register: result
-      ignore_errors: true
-      changed_when:
-        - '"LINK" in result.stderr'
-      failed_when: result.rc != 0
 
     # Container Development
     - name: "Ensure container tools installed"
