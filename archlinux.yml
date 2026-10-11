@@ -25,6 +25,9 @@
       become: yes
       pacman:
         name:
+          - tuned
+          - cronie
+          - vi
           - vim
           - plymouth
           - btrfs-progs
@@ -33,6 +36,7 @@
           - at # scheduled jobs (wie cron, aber nur ein mal)
           - bind
           - iputils
+          - iproute2 # ss
           - net-tools
           - impala # wifi tui
           - iftop
@@ -52,6 +56,7 @@
           - vim
           - openssh
           - systemd-resolvconf
+          - parted # disk partition manager
           - nfs-utils
         state: present
 
@@ -243,11 +248,23 @@
         nvim --headless "+Lazy! sync" +qa
 
     # Developer
+    - name: "Ensure git dotfiles are configured"
+      become: yes
+      shell: stow -v -t /home/joergw -S git
+      args:
+        chdir: ./dotfiles
+        executable: /bin/bash
+      register: result
+      ignore_errors: true
+      changed_when:
+        - '"LINK" in result.stderr'
+      failed_when: result.rc != 0
     - name: "Ensure nodejs and npm installed"
       become: yes
       pacman:
         name:
           - difftastic
+          - jq
           - nodejs
           - npm
           - yarn
